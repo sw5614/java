@@ -1,0 +1,54 @@
+package com.lcomputerstudy.books.java.ch07;
+
+public class Ex08test {
+
+	public static void main(String[] args) {
+		Car car = new Car();
+		car.setInfo("그랜저");
+		System.out.println(car.getInfo());
+
+		car.setInfo("그랜저", 200);
+		System.out.println(car.getInfo());
+
+		car.setInfo("그랜저", 200, "현대");
+		System.out.println(car.getInfo());
+
+		System.out.println(car.setInfo());
+		System.out.println(car.getInfo());
+	}
+
+}
+
+class Car {
+	String carname;
+	int speed;
+	String carmaker;
+
+	void setInfo(String carname) {
+		this.carname = carname;
+	}
+
+	void setInfo(String carname, int speed) {
+		this.carname = carname;
+		this.speed = speed;
+	}
+
+	void setInfo(String carname, int speed, String carmaker) {
+		this.carname = carname;
+		this.speed = speed;
+		this.carmaker = carmaker;
+	}
+
+	String setInfo() {
+		this.carname = "";
+		this.speed = 0;
+		this.carmaker = "";
+
+		return "자동차의 정보가 초기화 되었습니다.";
+	}
+
+	String getInfo() {
+		return "자동차이름: " + carname + "\n최대속도: " + speed + "\n자동차회사: " + carmaker + "\n";
+	}
+
+}
