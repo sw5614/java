@@ -1,0 +1,27 @@
+package com.lcomputerstudy.books.java.ch07;
+
+import java.util.Scanner;
+
+public class Ex07test {
+
+	public static void main(String[] args) {
+		Book6 b1 = new Book6();
+		b1.price = 1000;
+		System.out.println("세율적용가격 :" + b1.caltax());
+
+		Book6 b2 = new Book6();
+		b2.price = 2000;
+		System.out.println("세율적용가격 :" + (b2.price * Book6.TAX));
+
+	}
+
+}
+
+class Book6 {
+	int price;
+	final static float TAX = 1.1f;
+
+	float caltax() {
+		return price * TAX;
+	}
+}
