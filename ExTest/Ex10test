@@ -1,0 +1,48 @@
+package com.lcomputerstudy.books.java.ch07;
+
+public class Ex10test {
+	public static void main(String[] args) {
+		Movie movie1 = new Movie();
+		movie1.printInfo();
+
+		Movie1 movie2 = new Movie1("블랙아담");
+		movie2.printInfo();
+
+		Movie1 movie3 = new Movie1("블랙아담", 120);
+		movie3.printInfo();
+
+		Movie1 movie4 = new Movie1("블랙아담", 120, "액션");
+		movie4.printInfo();
+
+		// Book10 b6 = new Book10(); // 에러
+
+	}
+}
+
+class Movie1 {
+	String title;
+	int runtime;
+	String genre;
+
+	Movie1() {
+		this("", 0, "");
+	}
+
+	Movie1(String title) {
+		this(title, 0, "");
+	}
+
+	Movie1(String title, int runtime) {
+		this(title, runtime, "");
+	}
+
+	Movie1(String title, int runtime, String genre) {
+		this.title = title;
+		this.runtime = runtime;
+		this.genre = genre;
+	}
+
+	void printInfo() {
+		System.out.printf("제목: %s%n상영시간: %d분%n장르: %s%n%n", title, runtime, genre);
+	}
+}
