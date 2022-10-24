@@ -1,0 +1,50 @@
+package com.lcomputerstudy.books.java.ch07;
+
+import java.util.Arrays;
+
+// 가변인자
+public class Ex11test {
+
+	public static void main(String[] args) {
+		Book12 book1 = new Book12();
+		book1.title = "자바 문법";
+		book1.setAuthor("학원1", "학원2", "학원3");
+		book1.setTag("컴퓨터", "IT", "프로그램 언어", "자바");
+
+		Book12.printInfo(book1);
+
+		Book12 book2 = new Book12();
+		book2.title = "C 문법";
+		book2.setAuthor("엘코딩1", "엘코딩2", "엘코딩3", "엘코딩4", "엘코딩5");
+		book2.setTag("IT", "프로그램 언어");
+
+		Book12.printInfo(book2);
+	}
+
+}
+
+class Book12 {
+	String title;
+	String[] author;
+	String[] tag;
+
+	void setTag(String... params) {
+		tag = new String[params.length];
+		for (int i = 0; i < tag.length; i++) {
+			tag[i] = params[i];
+		}
+	}
+
+	void setAuthor(String... params) {
+		author = new String[params.length];
+		for (int i = 0; i < author.length; i++) {
+			author[i] = params[i];
+		}
+	}
+
+	static void printInfo(Book12 book) {
+		System.out.printf("제목: %s%n", book.title);
+		System.out.printf("저자: %s%n", Arrays.toString(book.author));
+		System.out.printf("카테고리: %s%n%n", Arrays.toString(book.tag));
+	}
+}
