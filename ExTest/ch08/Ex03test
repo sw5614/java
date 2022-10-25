@@ -8,7 +8,7 @@ public class Ex03test {
 
 }
 
-class Vehicle {
+class Vehicle1 {
 	int speed;
 	int weight;
 
@@ -16,7 +16,7 @@ class Vehicle {
 //		this(120,1000);
 //	}
 
-	Vehicle(int speed, int weight) {
+	Vehicle1(int speed, int weight) {
 		this.speed = speed;
 		this.weight = weight;
 	}
@@ -27,10 +27,10 @@ class Vehicle {
 
 }
 
-class Car extends Vehicle {
+class Car1 extends Vehicle1 {
 	int people;
 
-	Car() {
+	Car1() {
 		super(120, 1000);
 		this.people = 4;
 	}
@@ -40,10 +40,10 @@ class Car extends Vehicle {
 	}
 }
 
-class Tank extends Vehicle {
+class Tank1 extends Vehicle1 {
 	int army;
 
-	Tank() {
+	Tank1() {
 		super(100, 5000);
 		this.army = 4;
 	}
