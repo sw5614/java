@@ -1,0 +1,59 @@
+package com.lcomputerstudy.books.java.ch08.test;
+
+public class Ex03test {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+class Vehicle {
+	int speed;
+	int weight;
+
+//	public Vehicle() {
+//		this(120,1000);
+//	}
+
+	Vehicle(int speed, int weight) {
+		this.speed = speed;
+		this.weight = weight;
+	}
+
+	void run() {
+		System.out.println("운전중");
+	}
+
+}
+
+class Car extends Vehicle {
+	int people;
+
+	Car() {
+		super(120, 1000);
+		this.people = 4;
+	}
+
+	void go() {
+		System.out.println("자동차가는중");
+	}
+}
+
+class Tank extends Vehicle {
+	int army;
+
+	Tank() {
+		super(100, 5000);
+		this.army = 4;
+	}
+
+	void attack() {
+		System.out.println("공격중");
+	}
+}
+
+/*
+ * 문제 1. 이전 문제에서 작성한 부모 클래스에 기본 생성자를 없애면 컴파일 에러가 발생합니다. super를 사용하여 컴파일 에러가 나지
+ * 않도록 수정하세요.
+ */
