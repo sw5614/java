@@ -1,0 +1,29 @@
+package com.lcomputerstudy.books.java.ch08.test;
+
+public class Ex01test {
+
+	public static void main(String[] args) {
+
+	}
+
+}
+
+
+class Vehicle{
+	int speed;
+	int size;
+	
+	void run() {}
+}
+
+class Car extends Vehicle{
+	int people;
+	
+	void go() {}
+}
+
+class Tank extends Vehicle{
+	int army;
+	
+	void attack() {}
+}
