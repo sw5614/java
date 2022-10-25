@@ -1,0 +1,78 @@
+package com.lcomputerstudy.books.java.ch08.test;
+
+public class Ex04test {
+
+	public static void main(String[] args) {
+		Car2 car= new Car2();
+		Tank2 tank = new Tank2();
+		
+		car.setinfo(4);
+		tank.setinfo(5);
+		
+	}
+
+}
+
+class Vehicle2 {
+	int speed;
+	int weight;
+
+	 Vehicle2() {
+		this(120,1000);
+	}
+
+	Vehicle2(int speed, int weight) {
+		this.speed = speed;
+		this.weight = weight;
+	}
+
+	void run() {
+		System.out.println("운전중");
+	}
+
+}
+
+class Car2 extends Vehicle2 {
+	int people;
+
+	Car2() {
+		super(120, 1000);
+		this.people = 4;
+	}
+
+	void go() {
+		System.out.println("자동차가는중");
+	}
+
+	void setinfo(int people) {
+		this.people = people;
+		super.speed = 120;
+		super.weight = 1200;
+		System.out.println("병사수" + people + "속도" + speed + "무게" + weight);
+	}
+
+}
+
+class Tank2 extends Vehicle2 {
+	int army;
+
+	Tank2() {
+		super(100, 5000);
+		this.army = 4;
+	}
+
+	void attack() {
+		System.out.println("공격중");
+	}
+
+	void setinfo(int army) {
+		this.army = army;
+		super.speed = 100;
+		super.weight = 5000;
+		System.out.println("병사수" + army + "속도" + speed + "무게" + weight);
+	}
+}
+
+/*
+ * 문제 1. 이전 문제에서 만든 클래스에 this와 super를 적용한 뒤 각각의 값을 출력하세요.
+ */
