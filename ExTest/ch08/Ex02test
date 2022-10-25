@@ -1,0 +1,36 @@
+package com.lcomputerstudy.books.java.ch08.test;
+
+public class Ex02test {
+
+	public static void main(String[] args) {
+		
+		Circle circle = new Circle();
+		circle.p=new Point(10,10);
+		System.out.println(circle.p.x);
+		System.out.println(circle.p.y);
+	}
+
+}
+
+
+class Circle{
+	Point p;
+	int r;
+}
+
+
+class Point{
+	int x;
+	int y;
+	
+	Point(int x, int y){
+		this.x=x;
+		this.y=y;
+	}
+}
+
+
+/*
+문제 1.
+생각나는 개체를 이용하여 클래스들을 만들고 HAS-A 관계를 표현해주세요. 
+*/
