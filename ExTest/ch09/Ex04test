@@ -16,6 +16,9 @@ public class Ex04test {
 		b2.setTitle("자바 자료구조2");
 		b2.setAuthor("엘컴퓨터학원");
 		b2.setPrice(2000);
+		
+		Book4 rBook = (Book4)b1.compareProduct(b2);
+		System.out.println(rBook.getTitle());
 		System.out.println(((Book4) b1.compareProduct(b2)).getTitle());
 		
 
@@ -78,13 +81,8 @@ class Book4 extends Product {
 	public Product compareProduct(Product p) {
 		if (!(p instanceof Book4))
 			return null;
-
-		Book4 book = (Book4) p;
-		if(book.price<p.price)
-			return p;
 		
-		return book;
-		
+		return price > p.price ? this : p;  // price가 북에 있는경우 다운캐스팅해야함 이경우는 안해도되는데 price 를 북으로 넘기고  다운캐스팅하는 코드까지 짜보기 
 		
 
 	}
