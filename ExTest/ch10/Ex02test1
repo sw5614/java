@@ -1,0 +1,74 @@
+package com.lcomputerstudy.books.java.ch10.test;
+
+import com.lcomputerstudy.books.java.ch10.test.Food1.Cook1;
+
+public class Ex02test {
+
+	public static void main(String[] args) {
+		Food1 f = new Food1();
+		f.setPrice(1000);
+		f.setName("국밥");
+		System.out.println(f.getName()+" 가격은 : " + f.getPrice());
+		
+		Food1.Cook1 c = new Food1.Cook1();
+		c.setName("밥");
+		c.setPrice(500);
+		c.print();
+		System.out.println(c.getName() + " 원가는 " + c.getPrice());
+		System.out.println(c.price);
+		
+
+	}
+
+}
+
+class Food1 {
+	private int price;
+	private String name;
+
+	static class Cook1 {
+		static int price;
+		private String name;
+
+		public int getPrice() {
+			return price;
+		}
+
+		public void setPrice(int price) {
+			this.price = price;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public void print() {
+			System.out.println("조리중");
+		}
+
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public String getName() {
+		return name;
+	}
+}
+/*
+문제 1.
+static 중첩 클래스를 사용한 예제를 작성하세요.
+*/
