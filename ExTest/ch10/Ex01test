@@ -1,0 +1,71 @@
+package com.lcomputerstudy.books.java.ch10.test;
+
+public class Ex01test {
+
+	public static void main(String[] args) {
+		Food f = new Food();
+		f.setPrice(1000);
+		f.setName("국밥");
+		Food.Cook c = f.new Cook();
+		c.setName("국밥조리완료");
+		c.setPrice(500);
+		System.out.println(f.getName());
+		System.out.println("판매가격"+f.getPrice());
+		
+		c.print();
+		System.out.println(c.getName());
+		System.out.println("원가"+c.getPrice());
+		
+	}
+
+}
+
+class Food {
+	private int price;
+	private String name;
+
+	class Cook {
+		private int price;
+		private String name;
+		public int getPrice() {
+			return price;
+		}
+		public void setPrice(int price) {
+			this.price = price;
+		}
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
+		
+		public void print() {
+			System.out.println(Food.this.name+"조리중");
+		}
+		
+		
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public String getName() {
+		return name;
+	}
+}
+/*
+ * 문제 1. 이너 클래스를 사용한 예제를 작성하세요.
+ * 
+ * 문제 2. 아우터 클래스의 인스턴스 변수, 이너 클래스의 인스턴스 변수, 이너 크래스의 메소드내 지역 변수 모두 이름을 같게 설정하고
+ * 각각의 값을 출력하는 코드를 작성하세요.
+ */
