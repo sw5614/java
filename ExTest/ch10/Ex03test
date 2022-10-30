@@ -1,0 +1,53 @@
+package com.lcomputerstudy.books.java.ch10.test;
+
+public class Ex03test {
+
+	public static void main(String[] args) {
+		System.out.println(EBook3.checkAuthor("ABC"));
+		System.out.println(EBook3.checkAuthor("abc"));
+		System.out.println(EBook3.checkAuthor(""));
+		System.out.println(EBook3.checkAuthor("ABCDEFG"));
+	}
+
+}
+
+class EBook3 {
+	private String title;
+
+	public static boolean checkAuthor(String author) {
+
+		class Author {
+			String author;
+
+			Author(String author) {
+				this.author = author;
+			}
+		}
+		Author a = new Author(author);
+		String astr = a.author;
+		boolean b = false;
+		for (int i = 0; i < astr.length(); i++) {
+
+			if (astr.charAt(i) >= 'A' && astr.charAt(i) <= 'Z')
+				b = true;
+			else if (astr == "") {
+				b = true;
+			} else
+				b = false;
+
+		}
+		return b;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+}
+/*
+ * 문제 1. 로컬 클래스를 사용하여 저자 이름 유효성 검사 메소드를 코딩하세요. 저자 이름은 영문 대문자, 공백만 가능합니다.
+ */
