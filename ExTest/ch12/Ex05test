@@ -15,8 +15,9 @@ public class Ex05test {
 				}
 				m.Input();
 				
-				if(money>m.getPrice()|| money < 0)
-				money -= m.getPrice();
+				if(money>m.getPrice()|| money> 0) {
+				money -= m.getPrice();}
+				else {break;}
 
 				if (m.getIndex() < 0 || m.getIndex() > 3)
 					throw new IndexBoundsException("없는제품입니다");
