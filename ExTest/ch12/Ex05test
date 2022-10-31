@@ -1,0 +1,113 @@
+package com.lcomputerstudy.books.java.ch12.test;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Ex05test {
+
+	public static void main(String[] args) {
+		Machine m = new Machine();
+		int money = 3000;
+		while (true) {
+			try {
+				if (money < m.getPrice() || money < 0) {
+					throw new NotEnoughMoneyException();
+				}
+				m.Input();
+				
+				if(money>m.getPrice()|| money < 0)
+				money -= m.getPrice();
+
+				if (m.getIndex() < 0 || m.getIndex() > 3)
+					throw new IndexBoundsException("없는제품입니다");
+
+				System.out.println("현재돈은" + money);
+			} catch (IndexBoundsException e1) {
+				System.out.println(e1.getMessage() + "\n다시입력해주세요");
+				continue;
+			} catch (InputMismatchException e2) {
+				System.out.println("숫자만 입력해주세요");
+				continue;
+			} catch (NotEnoughMoneyException e) {
+				System.out.println("돈이 모자랍니다");
+				System.out.println("프로그램을 종료합니다 ");
+
+				break;
+			}
+
+		}
+	}
+
+}
+
+class Machine {
+	private String name;
+	private int index;
+	private int price;
+
+	public void Input() {
+		Scanner scanner = new Scanner(System.in);
+
+		index = scanner.nextInt();
+
+		switch (index) {
+		case 1:
+			System.out.println("콜라구매했씁니다");
+			name = "콜라";
+			price = 1000;
+			break;
+		case 2:
+			System.out.println("물 구매했습니다");
+			name = "물";
+			price = 500;
+			break;
+		case 3:
+			System.out.println("술 구매했습니다");
+			name = "술";
+			price = 2000;
+			break;
+		}
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+}
+
+class IndexBoundsException extends Exception {
+	public IndexBoundsException(String message) {
+		super(message);
+	}
+}
+
+class NotEnoughMoneyException extends Exception {
+
+}
+
+/*
+ * 문제 1. 음료를 뽑을 수 있는 자판기 프로그램을 만들어 주세요. 제공되는 음료 외의 번호 입력 시 발생되는 사용자 정의 예외 클래스를
+ * 작성해 주세요. 잔액이 부족할 경우 발생되는 사용자 정의 예외 클래스를 작성해 주세요. 각각의 예외 발생에 대해 예외처리하는 코드를 작성해
+ * 주세요.
+ */
