@@ -1,0 +1,53 @@
+package com.lcomputerstudy.books.java.ch11.test;
+
+public class Ex05test {
+
+	public static void main(String[] args) {
+		Food f1 = new Food();
+		f1.print();
+		Food f2 = new Food("김밥", 2000);
+		f2.print();
+		Food f3 = new Food();
+		f3.print();
+
+	}
+
+}
+
+class Food {
+	private int price;
+	private String name;
+int c;
+
+	{
+		System.out.println("음식준비중");
+	} // 인스턴스 블록
+
+	static {
+		System.out.println("주문받는중");
+	} // 정적블록
+
+	public Food() {
+		this("국밥", 1000);
+	}
+
+	public Food(String name, int price) {
+		this.price = price;
+		this.name = name;
+	}
+
+	public void print() {
+		System.out.println("음식이름 : " + name + "가격 : " + price);
+	}
+
+}
+
+///*
+//문제 1.
+//정적 초기화 블록과 인스턴스 초기화 블록을 사용한 예제를 작성하세요.
+
+//문제 2.
+//정적 초기화 블럭에서는 인스턴스 변수를 사용할 수 없습니다.
+//이유를 설명하세요.
+//*/
+// 정적 초기화 블럭은 인스턴스가 생성되기전에 호출 되기때문에 
