@@ -17,12 +17,14 @@ public class Ex05test {
 class Food {
 	private int price;
 	private String name;
-int c;
+	private int c;
+	private static int no=0;
 
 	{
 		System.out.println("음식준비중");
-	} // 인스턴스 블록
+		c=++no;
 
+	} //인스턴스 블록 
 	static {
 		System.out.println("주문받는중");
 	} // 정적블록
@@ -37,7 +39,7 @@ int c;
 	}
 
 	public void print() {
-		System.out.println("음식이름 : " + name + "가격 : " + price);
+		System.out.println(c+": 음식이름 : " + name + "가격 : " + price);
 	}
 
 }
