@@ -1,0 +1,42 @@
+package com.lcomputerstudy.books.java.ch13.test;
+
+public class Ex02test {
+
+	public static void main(String[] args) {
+		Food f1 = new Food("국밥", 7000);
+		Food f2 = new Food("국밥", 7000);
+		Food f3 = new Food("라면", 5000);
+
+		System.out.println("f1" + f1.toString());
+		System.out.println("f2" + f2.toString());
+		System.out.println("f3" + f3.toString());
+		System.out.println(f1.equals(f2));
+		System.out.println(f1.equals(f3));
+	}
+
+}
+
+class Food {
+	private String name;
+	private int price;
+
+	public Food(String name, int price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Food))
+			return false;
+		Food food = (Food) obj;
+
+		return name.equals(food.name) && (price == food.price);
+	}
+
+	@Override
+	public String toString() {
+		return "음식 이름=" + name + ", 가격=" + price;
+
+	}
+}
