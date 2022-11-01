@@ -12,6 +12,7 @@ public class Ex05test {
 
 		while (true) {
 			try {
+			System.out.println("-------번호선택 (콜라 : 1) ,( 물 : 2 ),( 술 : 3)");
 				Scanner scanner = new Scanner(System.in);
 
 				index = scanner.nextInt();
