@@ -5,36 +5,38 @@ import java.util.Scanner;
 
 public class Ex05test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)throws IndexBoundsException,InputMismatchException,NotEnoughMoneyException  {
 		Machine m = new Machine();
 		int money = 3000;
+		int index;
+
 		while (true) {
 			try {
-				if (money < m.getPrice() || money < 0) {
-					throw new NotEnoughMoneyException();
-				}
-				m.Input();
+				Scanner scanner = new Scanner(System.in);
+
+				index = scanner.nextInt();
+				if(index<=0 ||index>3)throw new IndexBoundsException("없는 번호입니다");
 				
-				if(money>m.getPrice()|| money> 0) {
-				money -= m.getPrice();}
-				else {break;}
-
-				if (m.getIndex() < 0 || m.getIndex() > 3)
-					throw new IndexBoundsException("없는제품입니다");
-
-				System.out.println("현재돈은" + money);
+				m.Input(index);
+							
+				if(money<m.getPrice()||money<=0) {
+				throw new NotEnoughMoneyException();
+				}else {
+					money-=m.getPrice();
+				}
+				
+	
 			} catch (IndexBoundsException e1) {
 				System.out.println(e1.getMessage() + "\n다시입력해주세요");
 				continue;
 			} catch (InputMismatchException e2) {
 				System.out.println("숫자만 입력해주세요");
-				continue;
+				
 			} catch (NotEnoughMoneyException e) {
-				System.out.println("돈이 모자랍니다");
-				System.out.println("프로그램을 종료합니다 ");
-
-				break;
+				System.out.println("돈이 모자랍니다 구매 실패했습니다 ");
+				continue;
 			}
+			System.out.println("현재돈은" + money);
 
 		}
 	}
@@ -43,17 +45,13 @@ public class Ex05test {
 
 class Machine {
 	private String name;
-	private int index;
 	private int price;
 
-	public void Input() {
-		Scanner scanner = new Scanner(System.in);
-
-		index = scanner.nextInt();
+	public void Input(int index) {
 
 		switch (index) {
 		case 1:
-			System.out.println("콜라구매했씁니다");
+			System.out.println("콜라 구매했씁니다");
 			name = "콜라";
 			price = 1000;
 			break;
@@ -79,13 +77,6 @@ class Machine {
 		this.name = name;
 	}
 
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
 
 	public int getPrice() {
 		return price;
