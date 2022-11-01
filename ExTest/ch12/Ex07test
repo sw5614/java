@@ -1,0 +1,112 @@
+package com.lcomputerstudy.books.java.ch12.test;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class Ex05test {
+
+	public static void main(String[] args)throws IndexBoundsException,InputMismatchException,NotEnoughMoneyException  {
+		Machine m = new Machine();
+		int money = 3000;
+		int index;
+
+		while (true) {
+			try {
+				System.out.println("-------번호선택 (콜라 : 1) ,( 물 : 2 ),( 술 : 3)");
+				Scanner scanner = new Scanner(System.in);
+
+				index = scanner.nextInt();
+				
+				
+				m.Input(index);
+							
+				if(money<m.getPrice()||money<=0) {
+				throw new NotEnoughMoneyException();
+				}else {
+					money-=m.getPrice();
+				}
+				
+	
+			} catch (IndexBoundsException e1) {
+				System.out.println(e1.getMessage() + "\n다시입력해주세요");
+				continue;
+			} catch (InputMismatchException e2) {
+				System.out.println("숫자만 입력해주세요");
+				
+			} catch (NotEnoughMoneyException e) {
+				System.out.println("돈이 모자랍니다 구매 실패했습니다 ");
+				continue;
+			}
+			System.out.println("현재돈은" + money);
+
+		}
+	}
+
+}
+
+class Machine {
+	private String name;
+	private int price;
+
+	public void Input(int index) throws IndexBoundsException {
+		try {
+			if(index<=0 ||index>3)throw new IndexBoundsException("없는 번호입니다");
+		}catch(IndexBoundsException e){
+			System.out.println("다른음료 골라주세요");
+			throw e; // 예외 던짐 
+		}
+		
+		switch (index) {
+		case 1:
+			System.out.println("콜라 구매했씁니다");
+			name = "콜라";
+			price = 1000;
+			break;
+		case 2:
+			System.out.println("물 구매했습니다");
+			name = "물";
+			price = 500;
+			break;
+		case 3:
+			System.out.println("술 구매했습니다");
+			name = "술";
+			price = 2000;
+			break;
+		}
+
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+}
+
+class IndexBoundsException extends Exception {
+	public IndexBoundsException(String message) {
+		super(message);
+	}
+}
+
+class NotEnoughMoneyException extends Exception {
+
+}
+
+/*
+ * 문제 1. 음료를 뽑을 수 있는 자판기 프로그램을 만들어 주세요. 제공되는 음료 외의 번호 입력 시 발생되는 사용자 정의 예외 클래스를
+ * 작성해 주세요. 잔액이 부족할 경우 발생되는 사용자 정의 예외 클래스를 작성해 주세요. 각각의 예외 발생에 대해 예외처리하는 코드를 작성해
+ * 주세요.
+ */
