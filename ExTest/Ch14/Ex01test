@@ -1,0 +1,41 @@
+package com.lcomputerstudy.books.java.ch14.test;
+
+public class Ex01test {
+
+	public static void main(String[] args) {
+		String s1 = "엘컴퓨터학원";
+		String s2 = "엘컴퓨터학원";
+		String s3 = new String("엘컴퓨터학원");
+		String s4 = new String("엘컴퓨터학원");
+		
+
+		System.out.println(System.identityHashCode(s1));
+		System.out.println(System.identityHashCode(s2));
+		System.out.println(System.identityHashCode(s3));
+		System.out.println(System.identityHashCode(s4));
+
+		System.out.println(s1==s2);  // identityHashCode 값이 같음  => true
+		System.out.println(s3==s4);
+		System.out.println(s1==s3);
+	
+		System.out.println(s1.hashCode());
+		System.out.println(s2.hashCode());
+		System.out.println(s3.hashCode());
+		System.out.println(s4.hashCode());
+		
+		System.out.println(s1.equals(s2));  // hashCode 값이 다 같음 
+		System.out.println(s1.equals(s3));
+		System.out.println(s3.equals(s4));
+		
+	}
+
+}
+
+/*
+ * 문제 1. == 과 equals 의 차이를 설명할 수 있는 예제를 작성하세요.
+ */
+
+// hashcode 는 내용이 같으면 동일한값반환
+//identityfyHashCode 는 주소값 그대로 출력? 동일한 레터럴일경우 같은값
+// but 같은내용으로 다르게 객체생성하면 다른값 반환 
+//
