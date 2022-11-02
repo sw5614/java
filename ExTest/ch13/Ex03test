@@ -1,0 +1,41 @@
+package com.lcomputerstudy.books.java.ch13.test;
+
+import java.util.Objects;
+
+public class Ex03test {
+
+	public static void main(String[] args) {
+		Food1 f1 = new Food1("국밥",7000);
+		Food1 f2 = new Food1("국밥",7000);
+		Food1 f3 = new Food1("김밥",2000);
+		Food1 f4 = new Food1("국밥",2000);
+		
+		System.out.println(f1.hashCode());
+		System.out.println(f2.hashCode());
+		System.out.println(f3.hashCode());
+		System.out.println(f4.hashCode());
+		 // String 만 해쉬코드 반영되는이유는 ? Integer해도 안됨 
+	}
+
+}
+
+class Food1 {
+	private String name;
+	private Integer price;
+
+	public Food1(String name, Integer price) {
+		this.name = name;
+		this.price = price;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name, price);
+	}
+}
+/*
+문제 1.
+원하는 클래스를 만드세요.
+인스턴스 두 개를 생성하세요.
+hashCode 메소드를 오버라이딩하여 인스턴스 변수들의 값이 모두 같을 시 같은 해시코드를 반환하도록 코딩하세요. 
+*/
