@@ -1,0 +1,23 @@
+package com.lcomputerstudy.books.java.ch15.test;
+
+public class Ex02test {
+
+	public static void main(String[] args) {
+		Integer intgA =3;
+		Integer intgB= 7;
+		
+		System.out.println(intgA.intValue()+intgB.intValue());
+	}
+
+}
+///*
+//문제 1.
+//Integer intgA = 3;
+//Integer intgB = 7;
+//int sum = intgA + intgB;
+//위 내용을 오토박싱과 오토언박싱이 필요 없는 코드로 수정하세요.
+//*/
+//오토박싱 = 기본형 -> 객체로 
+//오토 언박싱 = 객체 -> 기본형 
+
+//intValue () : 객체에서 기본형으로 
