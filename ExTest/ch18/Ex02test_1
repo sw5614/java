@@ -1,0 +1,148 @@
+/*
+ */
+package com.lcomputerstudy.books.java.ch18;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Ex02Set {
+
+	public static void main(String[] args) {
+		// 사용자로 부터 입력 받은 과목들이라고 가정합니다.
+		String[] arrFoods = { "짜장면", "짬뽕", "된장찌개", "김치찌개", "탕수육" };
+		System.out.println(Arrays.toString(arrFoods));
+
+		Customer s1 = new Customer("A");
+		s1.addFood("짜장면");
+		s1.addFood("짬뽕");
+		Customer s2 = new Customer("B");
+		s2.addFood("짜장면");
+		s2.addFood("탕수육");
+		Customer s3 = new Customer("C");
+		s3.addFood("짜장면");
+		s3.addFood("김치찌개");
+
+		Order order = new Order();
+		order.setStudents(s1, s2, s3);
+
+		order.setFoods(arrFoods);
+		Set<String> Foods = order.getFoods();
+		List<String> oFoods = order.getOrderedFoods();
+		System.out.println("문제1");
+		Set<String> rFoods = order.getRegisteredFoods();
+		Order.print(rFoods);
+		System.out.println("문제2");
+		Set<String> bFoods = order.getBasicFoods();
+		Order.print(bFoods);
+		System.out.println("문제3");
+		Set<String> cFoods = order.getCanceledFoods();
+		Order.print(cFoods);
+	}
+
+}
+
+class Order {
+	private Set<String> foods;
+	private List<Customer> customers;
+
+	public void setStudents(Customer... arrCustomer) {
+		customers = new ArrayList<>();
+		Collections.addAll(customers, arrCustomer);
+	}
+
+	public List<Customer> getStudents() {
+		return customers;
+	}
+
+	public void setFoods(String[] arrCustomer) {
+		List<String> list = new ArrayList<>();
+		Collections.addAll(list, arrCustomer);
+		foods = new HashSet<>(list);
+	}
+
+	public Set<String> getFoods() {
+		return foods;
+	}
+
+	public List<String> getOrderedFoods() {
+		List<String> oFoods = new ArrayList<>(foods);
+		Collections.sort(oFoods);
+		return oFoods;
+	}
+
+	public Set<String> getRegisteredFoods() {
+		Set<String> rFoods = new HashSet<>();
+		for (Customer student : customers) {
+			rFoods.addAll(student.getFoods());
+		}
+		return rFoods;
+	}
+
+	public Set<String> getBasicFoods() {
+		Set<String> f1 = null;
+		Set<String> f2 = null;
+
+		for (int i = 0; i < customers.size() - 1; i++) {
+			f1 = new HashSet<>(customers.get(i).getFoods());
+			f2 = new HashSet<>(customers.get(i + 1).getFoods());
+
+			f1.retainAll(f2);
+		}
+
+		return f1;
+	}
+
+	public Set<String> getCanceledFoods() {
+		Set<String> allFoods = new HashSet<>(foods);
+		Set<String> rFoods = getRegisteredFoods();
+
+		allFoods.removeAll(rFoods);
+
+		return allFoods;
+	}
+
+	public static void print(Collection<String> Foods) {
+		for (String subject : Foods) {
+			System.out.print(subject + ", ");
+		}
+		System.out.println("\n");
+	}
+}
+
+class Customer {
+	private String name;
+	private Set<String> foods;
+
+	public Customer(String name) {
+		this.name = name;
+		foods = new HashSet<>();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void addFood(String food) {
+		foods.add(food);
+	}
+
+	public Set<String> getFoods() {
+		return foods;
+	}
+}
+
+/*
+ * 엘컴퓨터식당에는 짜장면, 짬뽕, 된장찌개, 김치찌개, 탕수육 식사 메뉴가 있습니다. A는 짜장면, 짬뽕을 시켰습니다. B는 짜장면,
+ * 탕수육을 시켰습니다. C는 짜장면, 김치찌개를 시켰습니다.
+ * 
+ * 문제 1. 주문한 모든 메뉴를 중복 없이 정렬하여 출력하세요.
+ * 
+ * 문제 2. 모든 사람이 주문한 메뉴를 출력하세요.
+ * 
+ * 문제 3. 한 명도 시키지 않은 메뉴들을 출력하세요.
+ */
