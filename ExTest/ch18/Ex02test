@@ -1,0 +1,81 @@
+package com.lcomputerstudy.books.java.ch18.test;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Ex02test {
+
+	public static void main(String[] args) {
+		String [] allFoodList = { "짜장면","짬뽕","된장찌개","김치찌개","탕수육"};
+		List<String> allList = new ArrayList<>();
+		Collections.addAll(allList, allFoodList);
+		Set<String> setList = new HashSet<>(allList);
+		Customer c1 = new Customer("A");
+		Customer c2 = new Customer("B");
+		Customer c3 = new Customer("C");
+		c1.addFoods("짜장면");
+		c1.addFoods("짬뽕");
+		c2.addFoods("짜장면");
+		c2.addFoods("탕수육");
+		c3.addFoods("짜장면");
+		c3.addFoods("김치찌개");
+
+		List<String> list = new ArrayList<>();
+		list.addAll(c1.getFoods());
+		list.addAll(c2.getFoods());
+		list.addAll(c3.getFoods());
+		Collections.sort(list);
+		Set<String> foodSet = new HashSet<>(list);
+		System.out.println(foodSet); // 문제 1
+
+		c1.getFoods().retainAll(c2.getFoods());
+		c1.getFoods().retainAll(c3.getFoods());
+		System.out.println(c1.getFoods()); // 문제 2 
+		
+		setList.removeAll(foodSet);
+		System.out.println(setList); // 문제 3 
+		
+	}
+
+}
+
+
+class Customer {
+	private String name;
+	private Set<String> foods;
+
+	public Customer(String name) {
+		this.name = name;
+		foods = new HashSet<>();
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Set<String> getFoods() {
+		return foods;
+	}
+
+	public void addFoods(String food) {
+		foods.add(food);
+	}
+
+}
+
+///*
+//엘컴퓨터식당에는 짜장면, 짬뽕, 된장찌개, 김치찌개, 탕수육 식사 메뉴가 있습니다.
+//A는 짜장면, 짬뽕을 시켰습니다.
+//B는 짜장면, 탕수육을 시켰습니다.
+//C는 짜장면, 김치찌개를 시켰습니다. 
+//문제 1.
+//주문한 모든 메뉴를 중복 없이 정렬하여 출력하세요.
+//문제 2.
+//모든 사람이 주문한 메뉴를 출력하세요.
+//문제 3.
+//한 명도 시키지 않은 메뉴들을 출력하세요.
+//*/
