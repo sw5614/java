@@ -1,0 +1,53 @@
+package com.lcomputerstudy.books.java.ch18.test;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
+enum Notice {
+	INFORMATION, HUMOR, COMMUNICATION
+}
+
+public class Ex04test {
+
+	public static void main(String[] args) {
+		Board.takeNoice(Notice.INFORMATION);
+		Board.takeNoice(Notice.HUMOR);
+		Board.takeNoice(Notice.COMMUNICATION);
+		Board.printQ();
+		Board.delete();
+		Board.printQ();
+	}
+
+}
+
+class Board {
+	public static Queue<Notice> q = new LinkedList<>();
+
+	public static void takeNoice(Notice notice) {
+		q.offer(notice);
+	}
+
+	public static void delete() {
+		Notice notice = q.poll();
+		System.out.println(notice + "---삭제완료");
+		System.out.println();
+	}
+
+	public static void printQ() {
+		System.out.println("----게시물 출력시작----");
+		for (Iterator<Notice> iterator = q.iterator(); iterator.hasNext();) {
+			Notice notice = iterator.next();
+
+			System.out.println(notice);
+		}
+		System.out.println("----게시물 출력완료----");
+		System.out.println();
+	}
+
+}
+
+/*
+ * 문제 1. 공지사항 등록, 목록, 삭제 기능을 코딩하세요. 삭제 시 제일 오래된 공지사항을 삭제하세요. 공지사항의 등록, 목록, 삭제
+ * 상수는 enum을 사용하세요.
+ */
