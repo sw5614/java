@@ -1,0 +1,68 @@
+package com.lcomputerstudy.books.java.ch18.test;
+
+import java.util.Deque;
+
+public class Ex07test {
+
+	public static void main(String[] args) {
+		SmartPhone sp1 = new SmartPhone(1, "산책");
+		SmartPhone sp2 = new SmartPhone(2, "식사");
+		SmartPhone sp3 = new SmartPhone(3, "샤워");
+		SmartPhone sp4 = new SmartPhone(4, "운동");
+
+		Alarm a = new Alarm();
+		a.setAlarmQ(sp1);
+		a.setAlarmQ(sp2);
+		a.setAlarmQ(sp3);
+		a.setAlarmQ(sp4);
+
+		System.out.println(a.getAlarmQ().isEmpty());
+	}
+
+}
+
+class Alarm {
+	private Deque<SmartPhone> alarmQ;
+
+	public Deque<SmartPhone> getAlarmQ() {
+		return alarmQ;
+	}
+
+	public void setAlarmQ(SmartPhone sp) {
+		alarmQ.add(sp);
+	}
+
+}
+
+class SmartPhone {
+	private int hour;
+	private String content;
+
+	public SmartPhone(int hour, String content) {
+		super();
+		this.hour = hour;
+		this.content = content;
+	}
+
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		this.hour = hour;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	@Override
+	public String toString() {
+		return "SmartPhone [hour=" + hour + ", content=" + content + "]";
+	}
+
+}
