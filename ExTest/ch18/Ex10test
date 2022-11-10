@@ -1,0 +1,39 @@
+package com.lcomputerstudy.books.java.ch18.test;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Ex09test {
+
+	public static void main(String[] args) {
+		Map<String, Integer> school = new HashMap<>();
+		school.put("철수", 100);
+		school.put("영희", 90);
+		school.put("철수2", 80);
+		school.put("길동", 100);
+		school.put("철수", 70);
+		school.put("기리", 95);
+
+		for (Map.Entry<String, Integer> a : school.entrySet()) {
+			System.out.println("이름 : " + a.getKey() + "\t점수 :" + a.getValue());
+		}  // 문제 1
+		
+		System.out.println(school.values());
+		
+	}
+
+}
+///*
+//문제 1.
+//1반 학생들의 이름, 점수가 저장된 맵과 2반 학생들의 이름, 점수가 저장된 맵을 만드세요.
+//두 반의 모든 학생들을 중복 없이 출력하세요.
+//
+//문제 2.
+//점수가 90점 이상인 학생들을 맵에서 삭제 후 출력하세요.
+//
+//문제 3.
+//55점인 학생 모두 맵에서 삭제하세요.
+//
+//문제 4.
+//100점인 학생이 존재하는 지 출력하세요.
+//*/
