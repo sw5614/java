@@ -1,28 +1,53 @@
 package com.lcomputerstudy.books.java.ch18.test;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
-public class Ex09test {
+public class Ex10test {
 
 	public static void main(String[] args) {
 		Map<String, Integer> school = new HashMap<>();
 		school.put("철수", 100);
-		school.put("영희", 90);
+		school.put("영희", 95);
 		school.put("철수2", 80);
-		school.put("길동", 100);
-		school.put("철수", 70);
-		school.put("기리", 95);
+		school.put("길동", 85);
+		school.put("영희1", 55);
+		school.put("기리", 70);
+		print(school);
+		deleteOver(school, 90);
+		System.out.println();
+		print(school);
+		System.out.println();
+		delete(school, 55);
+		print(school);
+		System.out.println();
+		
+		System.out.println(school.containsValue(80)); //문제 4 100 앞에서 삭제되어서 80으로 바꿈 
+	}
 
-		for (Map.Entry<String, Integer> a : school.entrySet()) {
+	public static void print(Map<String, Integer> map) {
+		for (Map.Entry<String, Integer> a : map.entrySet()) {
 			System.out.println("이름 : " + a.getKey() + "\t점수 :" + a.getValue());
-		}  // 문제 1
-		
-		System.out.println(school.values());
-		
+		} // 문제 1
+	}
+
+	public static void deleteOver(Map<String, Integer> map, int score) {
+		for (Iterator<Integer> it1 = map.values().iterator(); it1.hasNext();) {
+			if (it1.next().intValue() >= score)
+				it1.remove();
+		}
+	} // 문제 2
+
+	public static void delete(Map<String, Integer> map, int score) {
+		for (Iterator<Integer> it1 = map.values().iterator(); it1.hasNext();) {
+			if (it1.next().intValue() == score)
+				it1.remove();
+		} // 문제 3
 	}
 
 }
+
 ///*
 //문제 1.
 //1반 학생들의 이름, 점수가 저장된 맵과 2반 학생들의 이름, 점수가 저장된 맵을 만드세요.
