@@ -1,0 +1,91 @@
+package com.lcomputerstudy.books.java.ch18.test;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
+public class Ex14test01 {
+	public static void main(String[] args) {
+		Book4 b1 = new Book4(100, "자바");
+		Book4 b2 = new Book4(300, "알고리즘");
+		Book4 b3 = new Book4(500, "C++");
+		Book4 b4 = new Book4(400, "파이썬");
+		Book4 b5 = new Book4(200, "자료구조");
+
+		PriorityQueue<Book4> bookQ = new PriorityQueue<>();
+
+		bookQ.offer(b1);
+		bookQ.offer(b2);
+		bookQ.offer(b3);
+		bookQ.offer(b4);
+		bookQ.offer(b5);
+		System.out.println(bookQ);
+		for (Iterator<Book4> it = bookQ.iterator(); it.hasNext();) {
+			it.next();
+			it.remove();
+			System.out.println(bookQ);
+		} // Comparable 쓰기
+
+		PriorityQueue<Book4> bookQ1 = new PriorityQueue<>(new AscendingB());
+
+		bookQ1.offer(b1);
+		bookQ1.offer(b2);
+		bookQ1.offer(b3);
+		bookQ1.offer(b4);
+		bookQ1.offer(b5);
+		System.out.println(bookQ1);
+
+		System.out.println(bookQ1);
+		for (Iterator<Book4> it = bookQ1.iterator(); it.hasNext();) {
+			bookQ1.poll();
+			System.out.println(bookQ1);
+		} // comparator 쓰기
+	}
+}
+
+class AscendingB implements Comparator<Book4> {
+	@Override
+	public int compare(Book4 b1, Book4 b2) {
+		int result = Integer.valueOf(b1.getPrice()).compareTo(b2.getPrice());
+		if (result == 0)
+			result = b1.getTitle().compareTo(b2.getTitle());
+		return result;
+	}
+}
+
+class Book4 implements Comparable<Book4> {
+	private int price;
+	private String title;
+
+	public Book4(int price, String title) {
+		this.price = price;
+		this.title = title;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	@Override
+	public String toString() {
+		return "(" + price + ", " + title + ")";
+	}
+
+	@Override
+	public int compareTo(Book4 book) {
+		int result = Integer.valueOf(price).compareTo(book.getPrice()) * -1;
+		if (result == 0)
+			result = title.compareTo(book.title);
+		return result;
+	}
+}
+
+//문제 3.
+//PriorityQueue에 책들을 입력하세요.
+//Queue에서 책의 가격이 높은 책 부터 제거되도록 코딩하세요.
+//Comparable을 이용해 가격이 높은 책부터 제거되도록 작성하세요. 
+//Comparator를 이용해 가격이 낮은 책부터 제거되도록 코딩하세요.
