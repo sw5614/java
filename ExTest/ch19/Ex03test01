@@ -1,0 +1,113 @@
+package com.lcomputerstudy.books.java.ch19.test;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+// 메소드 참조
+public class Ex03test {
+
+	public static void main(String[] args) {
+
+		Store store = new Store();
+		String[] titles = { "자바문법", "자바컬렉션프레임워크", "람다", "스트림" };
+
+		// static 메소드 호출
+		store.addAll(titles, Book::new, Book::validateLength);
+		System.out.println("---오름차순 정렬---");
+		Collections.sort(store.getItems(), Item::compareByTitleAsc);
+		Runnable printItems = store::forEach;
+		printItems.run();
+		System.out.println();
+		
+		
+		Collections.sort(store.getItems(), Item::compareByTitleDesc);  // 문제1 
+		System.out.println("---내림차순 정렬---");
+		printItems.run();
+		System.out.println();
+		
+		Consumer<Store> removeitems = Store::removeItem;// 문제 2
+		removeitems.accept(store);
+		printItems.run(); 
+		System.out.println();
+	
+		
+		Runnable  removeitems1 = store::removeItem; // 문제 2
+		removeitems1.run();
+		printItems.run(); 
+		
+		
+	}
+
+}
+
+class Store {
+	private List<Item> items = new ArrayList<>();
+
+	public void addAll(String[] titles, Function<String, Item> createItem, Predicate<String> validateItem) {
+		for (String title : titles) {
+			if (validateItem.test(title))
+				items.add(createItem.apply(title));
+		}
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void forEach() {
+		for (Item item : items) {
+			System.out.println("[title]" + item.getTitle());
+		}
+	}
+	
+	public void removeItem() {
+		items.remove(items.size()-1);
+	}
+	
+	
+}
+
+interface Item {
+	public abstract String getTitle();
+
+	public static int compareByTitleAsc(Item item1, Item item2) {
+		return item1.getTitle().compareTo(item2.getTitle());
+	}
+	
+	public static int compareByTitleDesc(Item item1, Item item2) {
+		return item1.getTitle().compareTo(item2.getTitle())*-1;   // 문제1 
+	}
+}
+
+class Book implements Item {
+	public static final int TITLE_MAX_LENGTH = 5;
+	private String title;
+
+	public Book(String title) {
+		this.title = title;
+	}
+
+	@Override
+	public String getTitle() {
+		return title;
+	}
+
+	public static boolean validateLength(String title) {
+		return title.length() <= TITLE_MAX_LENGTH;
+	}
+
+	public static int compareByTitle(Book b1, Book b2) {
+		return b1.getTitle().compareTo(b2.getTitle());
+	}
+}
+
+/*
+ * 문제 1. Store의 Item을 메소드 참조를 이용하여 내림차순으로 정렬하세요.
+ * 
+ * 문제 2. 인스턴스 메소드를 Store에 추가후 메소드 참조를 통해 호출하세요. 메소드 참조를 이용하여 인스턴스 메소드를 호출하는 두 가지
+ * 방식 모두 사용하세요.
+ */
