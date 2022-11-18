@@ -1,0 +1,62 @@
+package com.lcomputerstudy.books.java.ch19.test;
+
+import java.util.Optional;
+
+public class Ex08test {
+
+	public static void main(String[] args) {
+		USB usb = new USB();
+		usb.setSN("1234");
+		Optional<USB> u = Optional.of(usb);
+
+		SoundCard soundcard = new SoundCard();
+		soundcard.setUSB(u);
+		Optional<SoundCard> s = Optional.of(soundcard);
+
+		Computer computer = new Computer();
+		computer.setSoundCard(s);
+		Optional<Computer> c = Optional.of(computer);
+
+		String ac = Optional.ofNullable(computer).flatMap(Computer::getSoundCard).flatMap(SoundCard::getUSB)
+				.map(USB::getSN).orElse("444");
+		System.out.println(ac);
+	}
+
+}
+
+class Computer {
+
+	private Optional<SoundCard> soundCard;
+
+	public Optional<SoundCard> getSoundCard() {
+		return soundCard;
+	}
+
+	public void setSoundCard(Optional<SoundCard> soundCard) {
+		this.soundCard = soundCard;
+	}
+}
+
+class SoundCard {
+	private Optional<USB> usb;
+
+	public Optional<USB> getUSB() {
+		return usb;
+	}
+
+	public void setUSB(Optional<USB> usb) {
+		this.usb = usb;
+	}
+}
+
+class USB {
+	private String serialNumber;
+
+	public String getSN() {
+		return serialNumber;
+	}
+
+	public void setSN(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+}
