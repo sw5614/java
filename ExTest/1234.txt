@@ -1,0 +1,66 @@
+LastSessions<|||>1<|||>Unnamed
+LastActiveSession<|||>1<|||>Unnamed
+ColWidths_connform.ListSessions<|||>1<|||>163,50,50,50,50,50,10
+ColsVisible_connform.ListSessions<|||>1<|||>0,1,4,6
+ColPositions_connform.ListSessions<|||>1<|||>0,1,2,3,4,5,6
+ColSort_connform.ListSessions<|||>1<|||>0,0
+CreateDbCollation<|||>1<|||>utf8_general_ci
+ColWidths_frmTableEditor.listColumns<|||>1<|||>38,100,154,90,60,65,50,117,130,140,100,100
+ColsVisible_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
+ColPositions_frmTableEditor.listColumns<|||>1<|||>0,1,2,3,4,5,6,7,8,9,10,11
+ColSort_frmTableEditor.listColumns<|||>1<|||>-1,0
+ColWidths_frmTableEditor.treeIndexes<|||>1<|||>1371,100,80
+ColsVisible_frmTableEditor.treeIndexes<|||>1<|||>0,1,2
+ColPositions_frmTableEditor.treeIndexes<|||>1<|||>0,1,2
+ColSort_frmTableEditor.treeIndexes<|||>1<|||>-1,0
+ColWidths_frmTableEditor.listForeignKeys<|||>1<|||>1149,80,100,80,80,80
+ColsVisible_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColPositions_frmTableEditor.listForeignKeys<|||>1<|||>0,1,2,3,4,5
+ColSort_frmTableEditor.listForeignKeys<|||>1<|||>-1,0
+Servers\Unnamed\SessionCreated<|||>1<|||>2022-11-24 22:09:31
+Servers\Unnamed\Host<|||>1<|||>127.0.0.1
+Servers\Unnamed\WindowsAuth<|||>3<|||>0
+Servers\Unnamed\CleartextPluginEnabled<|||>3<|||>0
+Servers\Unnamed\User<|||>1<|||>root
+Servers\Unnamed\Password<|||>1<|||>2
+Servers\Unnamed\LoginPrompt<|||>3<|||>0
+Servers\Unnamed\Port<|||>1<|||>3306
+Servers\Unnamed\NetType<|||>3<|||>0
+Servers\Unnamed\Compressed<|||>3<|||>0
+Servers\Unnamed\LocalTimeZone<|||>3<|||>0
+Servers\Unnamed\QueryTimeout<|||>3<|||>30
+Servers\Unnamed\KeepAlive<|||>3<|||>20
+Servers\Unnamed\FullTableStatus<|||>3<|||>1
+Servers\Unnamed\Databases<|||>1<|||>
+Servers\Unnamed\Library<|||>1<|||>libmariadb.dll
+Servers\Unnamed\Comment<|||>1<|||>
+Servers\Unnamed\StartupScriptFilename<|||>1<|||>
+Servers\Unnamed\TreeBackground<|||>3<|||>536870911
+Servers\Unnamed\SSHtunnelHost<|||>1<|||>
+Servers\Unnamed\SSHtunnelHostPort<|||>3<|||>22
+Servers\Unnamed\SSHtunnelUser<|||>1<|||>
+Servers\Unnamed\SSHtunnelPassword<|||>1<|||>2
+Servers\Unnamed\SSHtunnelTimeout<|||>3<|||>4
+Servers\Unnamed\SSHtunnelPrivateKey<|||>1<|||>
+Servers\Unnamed\SSHtunnelPort<|||>3<|||>3307
+Servers\Unnamed\SSL_Active<|||>3<|||>0
+Servers\Unnamed\SSL_Key<|||>1<|||>
+Servers\Unnamed\SSL_Cert<|||>1<|||>
+Servers\Unnamed\SSL_CA<|||>1<|||>
+Servers\Unnamed\SSL_Cipher<|||>1<|||>
+Servers\Unnamed\ServerVersionFull<|||>1<|||>10.5.5-MariaDB - mariadb.org binary distribution
+Servers\Unnamed\ConnectCount<|||>3<|||>2
+Servers\Unnamed\ServerVersion<|||>3<|||>100505
+Servers\Unnamed\LastConnect<|||>1<|||>2022-11-24 23:45:45
+Servers\Unnamed\lastUsedDB<|||>1<|||>drx
+Servers\Unnamed\QueryHistory\1<|||>1<|||>2022-11-24 23:41:40|drx|31|CREATE TABLE `user` (<{{{><}}}>`u_no` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,<{{{><}}}>`u_id` VARCHAR(255) NOT NULL,<{{{><}}}>`u_pw` VARCHAR(255) NOT NULL,<{{{><}}}>`u_name` VARCHAR(255) NOT NULL,<{{{><}}}>`u_tel` VARCHAR(255) NOT NULL<{{{><}}}>)ENGINE= INNODB DEFAULT CHARSET =UTF8;
+Servers\Unnamed\QueryHistory\2<|||>1<|||>2022-11-24 23:44:46|drx|62|ALTER TABLE user<{{{><}}}>CHANGE COLUMN u_no u_idx INT(10) NOT NULL AUTO_INCREMENT FIRST,<{{{><}}}>DROP PRIMARY KEY,<{{{><}}}>ADD PRIMARY KEY (`u_idx`) USING BTREE; 
+Servers\Unnamed\QueryHistory\3<|||>1<|||>2022-11-24 23:50:03|drx|31|CREATE TABLE `board` (<{{{><}}}>`b_idx` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,<{{{><}}}>`b_title` VARCHAR(255) NOT NULL,<{{{><}}}>`b_content` VARCHAR(255) NOT NULL,<{{{><}}}>`b_date` VARCHAR(255) NOT NULL,<{{{><}}}>`b_writer` VARCHAR(255) NOT NULL,<{{{><}}}>`u_idx` INT(10) NOT NULL,<{{{><}}}>FOREIGN KEY(u_idx) REFERENCES user(u_idx) ON DELETE NO ACTION <{{{><}}}>)ENGINE = INNODB DEFAULT CHARSET=UTF8;
+Servers\Unnamed\QueryHistory\4<|||>1<|||>2022-11-24 23:51:31|drx|15|insert INTO user(u_id, u_pw, u_name, u_tel)<{{{><}}}>VALUE('abc', '1234', 'NAME1', '010-0000-0000')
+Servers\Unnamed\QueryHistory\5<|||>1<|||>2022-11-24 23:52:25|drx|16|insert INTO user(u_id, u_pw, u_name, u_tel)<{{{><}}}>VALUE('EFGFFF', '5678', '홍길동', '010-1234-5555')
+Servers\Unnamed\QueryHistory\6<|||>1<|||>2022-11-24 23:53:09|drx|0|UPDATE user SET u_id='DEF' WHERE u_id='EFGFFF'
+Servers\Unnamed\QueryHistory\7<|||>1<|||>2022-11-24 23:53:58|drx|16|DELETE FROM user WHERE u_id='DEF'
+Servers\Unnamed\QueryHistory\8<|||>1<|||>2022-11-24 23:55:52|drx|15|ALTER TABLE user ADD u_age INT(100)
+Servers\Unnamed\QueryHistory\9<|||>1<|||>2022-11-24 23:56:17|drx|0|insert INTO user(u_id, u_pw, u_name, u_tel, u_age)<{{{><}}}>VALUE('EFGFFF', '5678', '홍길동', '010-1234-5555', '20')
+Servers\Unnamed\QueryHistory\10<|||>1<|||>2022-11-24 23:57:01|drx|0|insert INTO user(u_id, u_pw, u_name, u_tel, u_age)<{{{><}}}>VALUE('a', '111', '김땡떙', '010-1111-1111', '20')
+Servers\Unnamed\QueryHistory\11<|||>1<|||>2022-11-25 00:00:37|drx|0|insert INTO user(u_id, u_pw, u_name, u_tel, u_age)<{{{><}}}>VALUE('b', '222', '이모씨', '010-1111-1111', '20'),<{{{><}}}>('c', '333', '김모씨', '010-2222-1111', '31'),<{{{><}}}>('d', '444', '임모씨', '010-3333-1111', '42'),<{{{><}}}>('e', '555', '장모씨', '010-4444-1111', '53'),<{{{><}}}>('f', '666', '정모씨', '010-5555-1111', '12'),<{{{><}}}>('g', '777', '배모씨', '010-6666-1111', '15'),<{{{><}}}>('h', '888', '윤모씨', '010-7777-1111', '33')
